@@ -1,0 +1,51 @@
+{
+  "name": "Inquiry",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "description": "Customer's full name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Customer's email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Customer's phone number"
+    },
+    "destination": {
+      "type": "string",
+      "description": "Preferred destination"
+    },
+    "travel_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Preferred travel date"
+    },
+    "travelers": {
+      "type": "number",
+      "description": "Number of travelers"
+    },
+    "message": {
+      "type": "string",
+      "description": "Additional message or requirements"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "contacted",
+        "quoted",
+        "booked",
+        "completed"
+      ],
+      "default": "new"
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "destination"
+  ]
+}

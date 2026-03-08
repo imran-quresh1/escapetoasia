@@ -1,0 +1,55 @@
+{
+  "name": "Destination",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the destination"
+    },
+    "country": {
+      "type": "string",
+      "enum": [
+        "India",
+        "Vietnam",
+        "Indonesia",
+        "Malaysia",
+        "Singapore",
+        "United Arab Emirates"
+      ],
+      "description": "Country where destination is located"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the destination"
+    },
+    "highlights": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key highlights of the destination"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "URL of destination image"
+    },
+    "duration_days": {
+      "type": "number",
+      "description": "Recommended trip duration in days"
+    },
+    "starting_price": {
+      "type": "number",
+      "description": "Starting price per person in USD"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this destination is featured"
+    }
+  },
+  "required": [
+    "name",
+    "country",
+    "description"
+  ]
+}
