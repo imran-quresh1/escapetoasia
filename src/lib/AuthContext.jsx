@@ -21,11 +21,21 @@ export const AuthProvider = ({ children }) => {
     try {
       setIsLoadingPublicSettings(true);
       setAuthError(null);
+
+      if (!appParams.appId || !appParams.appBaseUrl) {
+        setAuthError({
+          type: 'missing_config',
+          message: 'Missing Base44 app configuration. Set VITE_BASE44_APP_ID and VITE_BASE44_APP_BASE_URL before building for production.'
+        });
+        setIsLoadingPublicSettings(false);
+        setIsLoadingAuth(false);
+        return;
+      }
       
       // First, check app public settings (with token if available)
       // This will tell us if auth is required, user not registered, etc.
       const appClient = createAxiosClient({
-        baseURL: `/api/apps/public`,
+        baseURL: `${appParams.appBaseUrl}/api/apps/public`,
         headers: {
           'X-App-Id': appParams.appId
         },
