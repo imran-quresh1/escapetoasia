@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Menu, X, Plane, Phone, Mail, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ChatWidget from './components/chat/ChatWidget';
 
@@ -40,7 +40,11 @@ export default function Layout({ children, currentPageName }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <Link to={createPageUrl('Home')} className="flex items-center gap-2">
-              <Plane className={`w-8 h-8 transition-colors ${isScrolled ? 'text-[#0F4C5C]' : 'text-white'}`} />
+              <img
+                src={import.meta.env.BASE_URL + 'images/logo.jpg'}
+                alt="Escape To Asia"
+                className="w-14 h-14 rounded-full object-cover"
+              />
               <span className={`text-xl font-semibold tracking-tight transition-colors ${
                 isScrolled ? 'text-[#0F4C5C]' : 'text-white'
               }`}>
@@ -124,7 +128,11 @@ export default function Layout({ children, currentPageName }) {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <Plane className="w-8 h-8 text-[#D4A574]" />
+                <img
+                  src={import.meta.env.BASE_URL + 'images/logo.jpg'}
+                  alt="Escape To Asia"
+                  className="w-14 h-14 rounded-full object-cover"
+                />
                 <span className="text-xl font-semibold">Escape To Asia</span>
               </div>
               <p className="text-white/70 text-sm leading-relaxed">
