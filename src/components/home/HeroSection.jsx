@@ -10,7 +10,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1920&q=80"
+          src={import.meta.env.BASE_URL + 'images/hero-1920.jpg'}
           alt="Beautiful Asian landscape"
           className="w-full h-full object-cover"
         />

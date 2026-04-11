@@ -68,7 +68,7 @@ export default function Services() {
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=80"
+            src={import.meta.env.BASE_URL + 'images/services-bg-1920.jpg'}
             alt="Our Services"
             className="w-full h-full object-cover"
           />

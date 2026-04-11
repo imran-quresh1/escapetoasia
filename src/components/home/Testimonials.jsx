@@ -2,25 +2,27 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 
+const img = (f) => import.meta.env.BASE_URL + 'images/' + f;
+
 const testimonials = [
   {
     name: 'Sarah Mitchell',
     location: 'New York, USA',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80',
+    image: img('testimonial-sarah-200.jpg'),
     text: 'Our trip to Vietnam was absolutely perfect. From the moment we landed, everything was seamlessly arranged. Our guide was incredible and showed us places we never would have found on our own.',
     destination: 'Vietnam',
   },
   {
     name: 'James Chen',
     location: 'London, UK',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80',
+    image: img('testimonial-james-200.jpg'),
     text: 'The Bali package exceeded all expectations. The private villa, the temple visits at sunrise, the cooking class - every detail was thoughtfully planned. Truly a once-in-a-lifetime experience.',
     destination: 'Indonesia',
   },
   {
     name: 'Emma Rodriguez',
     location: 'Toronto, Canada',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80',
+    image: img('testimonial-emma-200.jpg'),
     text: 'India can be overwhelming for first-time visitors, but Wanderlux made it magical. Our personal guide helped us navigate the chaos beautifully. The Golden Triangle tour was unforgettable.',
     destination: 'India',
   },

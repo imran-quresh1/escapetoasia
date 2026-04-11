@@ -44,7 +44,7 @@ export default function Destinations() {
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80"
+            src={import.meta.env.BASE_URL + 'images/destinations-bg-1920.jpg'}
             alt="Destinations"
             className="w-full h-full object-cover"
           />

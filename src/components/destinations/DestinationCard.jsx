@@ -20,6 +20,7 @@ export default function DestinationCard({ destination, index }) {
               src={destination.image_url}
               alt={destination.name}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              onError={(e) => { e.target.src = import.meta.env.BASE_URL + 'images/destinations-bg-1920.jpg'; }}
             />
             <div className="absolute top-4 left-4">
               <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-[#0F4C5C]">

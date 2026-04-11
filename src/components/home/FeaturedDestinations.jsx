@@ -4,29 +4,31 @@ import { createPageUrl } from '../../utils';
 import { motion } from 'framer-motion';
 import { ArrowRight, MapPin } from 'lucide-react';
 
+const img = (f) => import.meta.env.BASE_URL + 'images/' + f;
+
 const destinations = [
   {
     name: 'Bali',
     country: 'Indonesia',
-    image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80',
+    image: img('bali-800.jpg'),
     price: 1299,
   },
   {
     name: 'Jaipur',
     country: 'India',
-    image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&q=80',
+    image: img('jaipur-800.jpg'),
     price: 1099,
   },
   {
     name: 'Ha Long Bay',
     country: 'Vietnam',
-    image: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80',
+    image: img('vietnam-800.jpg'),
     price: 1199,
   },
   {
     name: 'Singapore',
     country: 'Singapore',
-    image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80',
+    image: img('singapore-800.jpg'),
     price: 1499,
   },
 ];

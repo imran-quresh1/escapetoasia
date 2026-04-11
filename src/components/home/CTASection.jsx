@@ -9,7 +9,7 @@ export default function CTASection() {
     <section className="relative py-32 px-4 overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=1920&q=80"
+          src={import.meta.env.BASE_URL + 'images/cta-bg-1920.jpg'}
           alt="Travel adventure"
           className="w-full h-full object-cover"
         />

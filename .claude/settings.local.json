@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs ls:*)",
+      "Bash(npm run:*)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(curl -sI \"https://images.unsplash.com/photo-1567096820013-6f0b1796a8c4?w=600&q=80\")",
+      "Bash(curl -sI \"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80\")",
+      "Bash(head -1 curl -sI \"https://images.unsplash.com/photo-1527854236-daaf5b48f5e3?w=600&q=80\")",
+      "Bash(head -1 curl -sI \"https://images.unsplash.com/photo-1574279606130-09ead0f89992?w=600&q=80\")",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80\" -o /Users/imranqureshi/imran/projects/escapetoasia/public/images/activity-cooking-600.jpg)",
+      "Bash(file /Users/imranqureshi/imran/projects/escapetoasia/public/images/activity-safari-600.jpg cat /Users/imranqureshi/imran/projects/escapetoasia/public/images/activity-safari-600.jpg curl -sI \"https://images.unsplash.com/photo-1603262110167-81b93a1d7382?w=600&q=80\")",
+      "Bash(curl -sI \"https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80\")",
+      "Bash(head -1 curl -sI \"https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&q=80\")",
+      "Bash(head -1 curl -sI \"https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80\")",
+      "Bash(head -1 curl -sI \"https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=80\")",
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80\" -o /Users/imranqureshi/imran/projects/escapetoasia/public/images/activity-safari-600.jpg)",
+      "Bash(curl -s http://localhost:5173/api/prod/entities/Destination/list -H 'Content-Type: application/json')",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -sv \"http://localhost:5173/api/prod/entities/Destination/list\")",
+      "Bash(curl -sI \"https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80\")"
+    ]
+  }
+}

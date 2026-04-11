@@ -2,13 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Star } from 'lucide-react';
 
+const img = (f) => import.meta.env.BASE_URL + 'images/' + f;
+
 const staysByDestination = {
   'Dubai': [
     {
       name: 'Burj Al Arab Jumeirah',
       stars: 5,
       description: 'Iconic sail-shaped luxury hotel with world-class service',
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80',
+      image: img('hotel-marina-600.jpg'),
       location: 'Jumeirah Beach',
       amenities: ['Private Beach', 'Infinity Pool', 'Spa', 'Fine Dining']
     },
@@ -16,7 +18,7 @@ const staysByDestination = {
       name: 'Atlantis The Palm',
       stars: 5,
       description: 'Spectacular resort on Palm Jumeirah with aquarium and waterpark',
-      image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80',
+      image: img('hotel-oberoi-600.jpg'),
       location: 'Palm Jumeirah',
       amenities: ['Aquaventure', 'Dolphin Bay', 'Beach Access', 'Multiple Restaurants']
     }
@@ -26,7 +28,7 @@ const staysByDestination = {
       name: 'The Mulia Resort',
       stars: 5,
       description: 'Beachfront luxury with stunning ocean views',
-      image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80',
+      image: img('hotel-anantara-600.jpg'),
       location: 'Nusa Dua',
       amenities: ['Private Beach', 'Spa', 'Infinity Pools', 'Fine Dining']
     },
@@ -34,7 +36,7 @@ const staysByDestination = {
       name: 'Hanging Gardens of Bali',
       stars: 5,
       description: 'Iconic jungle resort with famous infinity pool',
-      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80',
+      image: img('hotel-hanging-600.jpg'),
       location: 'Ubud',
       amenities: ['Jungle Views', 'Spa', 'Yoga', 'Organic Restaurant']
     }
@@ -44,7 +46,7 @@ const staysByDestination = {
       name: 'Rambagh Palace',
       stars: 5,
       description: 'Former royal residence turned heritage hotel',
-      image: 'https://images.unsplash.com/photo-1596436889106-be35e843f974?w=600&q=80',
+      image: img('hotel-aman-600.jpg'),
       location: 'City Centre',
       amenities: ['Palace Gardens', 'Royal Spa', 'Fine Dining', 'Heritage Tours']
     },
@@ -52,7 +54,7 @@ const staysByDestination = {
       name: 'The Oberoi Rajvilas',
       stars: 5,
       description: 'Luxury resort with traditional Rajasthani architecture',
-      image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&q=80',
+      image: img('hotel-raffles-600.jpg'),
       location: 'Goner Road',
       amenities: ['Private Villas', 'Pool', 'Spa', 'Cultural Performances']
     }
@@ -62,7 +64,7 @@ const staysByDestination = {
       name: 'Luxury Resort & Spa',
       stars: 5,
       description: 'Premium accommodation with world-class facilities',
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80',
+      image: img('hotel-marina-600.jpg'),
       location: 'Prime Location',
       amenities: ['Pool', 'Spa', 'Restaurant', 'Gym']
     }

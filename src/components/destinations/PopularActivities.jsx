@@ -2,26 +2,28 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, Users } from 'lucide-react';
 
+const img = (f) => import.meta.env.BASE_URL + 'images/' + f;
+
 const activitiesByDestination = {
   'Dubai': [
     {
       name: 'Burj Khalifa At The Top',
       description: 'Visit the observation deck on the 124th floor of the world\'s tallest building',
-      image: 'https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=600&q=80',
+      image: img('activity-temples-600.jpg'),
       duration: '2-3 hours',
       groupSize: 'Any size'
     },
     {
       name: 'Desert Safari & BBQ Dinner',
       description: 'Thrilling dune bashing, camel rides, and traditional Bedouin camp experience',
-      image: 'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?w=600&q=80',
+      image: img('activity-diving-600.jpg'),
       duration: '6 hours',
       groupSize: '2-15 people'
     },
     {
       name: 'Dubai Marina Yacht Cruise',
       description: 'Luxury yacht experience along Dubai\'s stunning waterfront',
-      image: 'https://images.unsplash.com/photo-1567096820013-6f0b1796a8c4?w=600&q=80',
+      image: img('activity-cooking-600.jpg'),
       duration: '2 hours',
       groupSize: '2-20 people'
     },
@@ -30,21 +32,21 @@ const activitiesByDestination = {
     {
       name: 'Ubud Rice Terrace Trek',
       description: 'Guided walk through stunning Tegalalang rice terraces',
-      image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80',
+      image: img('bali-600.jpg'),
       duration: '3 hours',
       groupSize: '2-10 people'
     },
     {
       name: 'Temple & Waterfall Tour',
       description: 'Visit sacred temples and hidden waterfalls in the jungle',
-      image: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&q=80',
+      image: img('activity-desert-600.jpg'),
       duration: '5 hours',
       groupSize: '2-8 people'
     },
     {
       name: 'Sunset Beach Club',
       description: 'Relax at an exclusive beach club with ocean views',
-      image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80',
+      image: img('activity-sailing-600.jpg'),
       duration: '4 hours',
       groupSize: 'Any size'
     },
@@ -53,21 +55,21 @@ const activitiesByDestination = {
     {
       name: 'Amber Fort & Palace Tour',
       description: 'Explore the magnificent hilltop fort with elephant ride option',
-      image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80',
+      image: img('india-600.jpg'),
       duration: '4 hours',
       groupSize: '2-12 people'
     },
     {
       name: 'City Palace & Markets',
       description: 'Discover royal heritage and vibrant bazaars of the Pink City',
-      image: 'https://images.unsplash.com/photo-1603262110167-81b93a1d7382?w=600&q=80',
+      image: img('activity-safari-600.jpg'),
       duration: '3 hours',
       groupSize: '2-15 people'
     },
     {
       name: 'Traditional Rajasthani Dinner',
       description: 'Experience authentic cuisine with cultural performances',
-      image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80',
+      image: img('activity-street-food-600.jpg'),
       duration: '3 hours',
       groupSize: '2-20 people'
     },
@@ -76,21 +78,21 @@ const activitiesByDestination = {
     {
       name: 'Overnight Cruise',
       description: 'Luxury junk boat cruise through limestone karsts',
-      image: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&q=80',
+      image: img('activity-trekking-600.jpg'),
       duration: '2 days',
       groupSize: '2-30 people'
     },
     {
       name: 'Kayaking & Cave Exploration',
       description: 'Paddle through hidden lagoons and ancient caves',
-      image: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80',
+      image: img('vietnam-600.jpg'),
       duration: '4 hours',
       groupSize: '2-10 people'
     },
     {
       name: 'Floating Village Visit',
       description: 'Discover the unique lifestyle of Ha Long\'s water communities',
-      image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80',
+      image: img('activity-sailing-600.jpg'),
       duration: '3 hours',
       groupSize: '2-15 people'
     },
@@ -99,21 +101,21 @@ const activitiesByDestination = {
     {
       name: 'Gardens by the Bay',
       description: 'Explore futuristic Supertrees and Cloud Forest dome',
-      image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80',
+      image: img('singapore-600.jpg'),
       duration: '3 hours',
       groupSize: 'Any size'
     },
     {
       name: 'Night Safari',
       description: 'World\'s first nocturnal wildlife park experience',
-      image: 'https://images.unsplash.com/photo-1540202404-a2f29016b523?w=600&q=80',
+      image: img('activity-beach-600.jpg'),
       duration: '4 hours',
       groupSize: '2-20 people'
     },
     {
       name: 'Hawker Centre Food Tour',
       description: 'Taste authentic local dishes at famous food centres',
-      image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80',
+      image: img('activity-street-food-600.jpg'),
       duration: '3 hours',
       groupSize: '2-12 people'
     },
@@ -122,14 +124,14 @@ const activitiesByDestination = {
     {
       name: 'City Cultural Tour',
       description: 'Explore historical landmarks and local culture',
-      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80',
+      image: img('activity-cycling-600.jpg'),
       duration: '4 hours',
       groupSize: '2-15 people'
     },
     {
       name: 'Local Market Experience',
       description: 'Immerse yourself in vibrant local markets',
-      image: 'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=80',
+      image: img('activity-yoga-600.jpg'),
       duration: '3 hours',
       groupSize: '2-10 people'
     },

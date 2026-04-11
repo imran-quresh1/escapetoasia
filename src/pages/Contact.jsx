@@ -94,7 +94,7 @@ export default function Contact() {
       <section className="relative h-[40vh] min-h-[350px] flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&q=80"
+            src={import.meta.env.BASE_URL + 'images/contact-bg-1920.jpg'}
             alt="Contact Us"
             className="w-full h-full object-cover"
           />

@@ -1,14 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const img = (f) => import.meta.env.BASE_URL + 'images/' + f;
+
 const countries = [
-  { name: 'All', value: 'all', image: 'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=200&q=80' },
-  { name: 'UAE', value: 'United Arab Emirates', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=200&q=80' },
-  { name: 'India', value: 'India', image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=200&q=80' },
-  { name: 'Vietnam', value: 'Vietnam', image: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=200&q=80' },
-  { name: 'Indonesia', value: 'Indonesia', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=200&q=80' },
-  { name: 'Malaysia', value: 'Malaysia', image: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=200&q=80' },
-  { name: 'Singapore', value: 'Singapore', image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=200&q=80' },
+  { name: 'All', value: 'all', image: img('filter-all-200.jpg') },
+  { name: 'UAE', value: 'United Arab Emirates', image: img('filter-uae-200.jpg') },
+  { name: 'India', value: 'India', image: img('india-200.jpg') },
+  { name: 'Vietnam', value: 'Vietnam', image: img('vietnam-200.jpg') },
+  { name: 'Indonesia', value: 'Indonesia', image: img('bali-200.jpg') },
+  { name: 'Malaysia', value: 'Malaysia', image: img('filter-malaysia-200.jpg') },
+  { name: 'Singapore', value: 'Singapore', image: img('singapore-200.jpg') },
 ];
 
 export default function CountryFilter({ selected, onSelect }) {

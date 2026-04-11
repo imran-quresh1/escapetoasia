@@ -52,6 +52,7 @@ export default function DestinationDetail() {
             src={destination.image_url}
             alt={destination.name}
             className="w-full h-full object-cover"
+            onError={(e) => { e.target.src = import.meta.env.BASE_URL + 'images/destinations-bg-1920.jpg'; }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         </div>
