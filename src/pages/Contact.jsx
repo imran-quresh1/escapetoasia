@@ -1,64 +1,44 @@
 import React, { useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { base44 } from '@/api/base44Client';
+import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Calendar } from '@/components/ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { format } from 'date-fns';
-import { CalendarIcon, Send, Phone, Mail, MapPin, CheckCircle, Loader2 } from 'lucide-react';
-
-const destinations = [
-  'United Arab Emirates - Dubai',
-  'India - Jaipur',
-  'India - Goa',
-  'India - Kerala',
-  'India - Rajasthan',
-  'Vietnam - Ha Long Bay',
-  'Vietnam - Ho Chi Minh City',
-  'Vietnam - Hanoi',
-  'Indonesia - Bali',
-  'Indonesia - Jakarta',
-  'Indonesia - Lombok',
-  'Malaysia - Kuala Lumpur',
-  'Malaysia - Langkawi',
-  'Malaysia - Penang',
-  'Singapore',
-  'Multiple Destinations',
-  'Not Sure Yet',
-];
+import { Send, Phone, Mail, CheckCircle, Loader2 } from 'lucide-react';
 
 export default function Contact() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const preselectedDestination = urlParams.get('destination') || '';
-
   const [formData, setFormData] = useState({
     full_name: '',
     email: '',
     phone: '',
-    destination: preselectedDestination,
-    travel_date: null,
-    travelers: '',
     message: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
-
-  const createInquiry = useMutation({
-    mutationFn: (data) => base44.entities.Inquiry.create(data),
-    onSuccess: () => setSubmitted(true),
-  });
+  const [isSending, setIsSending] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createInquiry.mutate({
-      ...formData,
-      travel_date: formData.travel_date ? format(formData.travel_date, 'yyyy-MM-dd') : null,
-      travelers: formData.travelers ? parseInt(formData.travelers) : null,
-    });
+    setIsSending(true);
+    setError(null);
+
+    emailjs
+      .send(
+        'YOUR_SERVICE_ID',   // replace with your EmailJS Service ID
+        'YOUR_TEMPLATE_ID',  // replace with your EmailJS Template ID
+        formData,
+        'YOUR_PUBLIC_KEY'    // replace with your EmailJS Public Key
+      )
+      .then(() => {
+        setSubmitted(true);
+      })
+      .catch(() => {
+        setError('Something went wrong. Please try again or contact us directly.');
+      })
+      .finally(() => {
+        setIsSending(false);
+      });
   };
 
   if (submitted) {
@@ -100,7 +80,7 @@ export default function Contact() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70" />
         </div>
-        
+
         <div className="relative z-10 text-center px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -161,14 +141,12 @@ export default function Contact() {
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-[#D4A574]/20 flex items-center justify-center flex-shrink-0">
                     <Mail className="w-5 h-5 text-[#D4A574]" />
-                    </div>
-                    <div>
+                  </div>
+                  <div>
                     <h4 className="font-medium text-[#0F4C5C]">Email</h4>
                     <p className="text-[#5C4033]/70">customer.service@escapetoasia.co.uk</p>
-                    </div>
+                  </div>
                 </div>
-
-
               </div>
             </motion.div>
 
@@ -181,116 +159,50 @@ export default function Contact() {
             >
               <div className="bg-white rounded-2xl p-8 shadow-xl">
                 <h2 className="text-2xl font-semibold text-[#0F4C5C] mb-6">Request a Quote</h2>
-                
+
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-[#5C4033] mb-2">
-                        Full Name *
-                      </label>
-                      <Input
-                        required
-                        value={formData.full_name}
-                        onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-                        placeholder="Your name"
-                        className="h-12"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#5C4033] mb-2">
-                        Email Address *
-                      </label>
-                      <Input
-                        required
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="your@email.com"
-                        className="h-12"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-[#5C4033] mb-2">
-                        Phone Number
-                      </label>
-                      <Input
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+44 7700 900000"
-                        className="h-12"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#5C4033] mb-2">
-                        Destination *
-                      </label>
-                      <Select
-                        value={formData.destination}
-                        onValueChange={(value) => setFormData({ ...formData, destination: value })}
-                      >
-                        <SelectTrigger className="h-12">
-                          <SelectValue placeholder="Select destination" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {destinations.map((dest) => (
-                            <SelectItem key={dest} value={dest}>{dest}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-[#5C4033] mb-2">
-                        Preferred Travel Date
-                      </label>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button
-                            variant="outline"
-                            className="w-full h-12 justify-start text-left font-normal"
-                          >
-                            <CalendarIcon className="mr-2 h-4 w-4" />
-                            {formData.travel_date ? format(formData.travel_date, 'PPP') : 'Select date'}
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0">
-                          <Calendar
-                            mode="single"
-                            selected={formData.travel_date}
-                            onSelect={(date) => setFormData({ ...formData, travel_date: date })}
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#5C4033] mb-2">
-                        Number of Travelers
-                      </label>
-                      <Select
-                        value={formData.travelers}
-                        onValueChange={(value) => setFormData({ ...formData, travelers: value })}
-                      >
-                        <SelectTrigger className="h-12">
-                          <SelectValue placeholder="Select" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {[1, 2, 3, 4, 5, 6, 7, 8, '9+'].map((num) => (
-                            <SelectItem key={num} value={String(num)}>{num} {num === 1 ? 'traveler' : 'travelers'}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
+                  <div>
+                    <label className="block text-sm font-medium text-[#5C4033] mb-2">
+                      Full Name *
+                    </label>
+                    <Input
+                      required
+                      value={formData.full_name}
+                      onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
+                      placeholder="Your name"
+                      className="h-12"
+                    />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-[#5C4033] mb-2">
-                      Additional Details
+                      Email Address
+                    </label>
+                    <Input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="your@email.com"
+                      className="h-12"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-[#5C4033] mb-2">
+                      Phone Number *
+                    </label>
+                    <Input
+                      required
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="+44 7700 900000"
+                      className="h-12"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-[#5C4033] mb-2">
+                      Details
                     </label>
                     <Textarea
                       value={formData.message}
@@ -300,17 +212,21 @@ export default function Contact() {
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-red-500 text-sm">{error}</p>
+                  )}
+
                   <Button
                     type="submit"
-                    disabled={createInquiry.isPending}
+                    disabled={isSending}
                     className="w-full h-14 bg-[#D4A574] hover:bg-[#C49464] text-white font-medium rounded-full text-lg"
                   >
-                    {createInquiry.isPending ? (
+                    {isSending ? (
                       <Loader2 className="w-5 h-5 animate-spin mr-2" />
                     ) : (
                       <Send className="w-5 h-5 mr-2" />
                     )}
-                    {createInquiry.isPending ? 'Sending...' : 'Send Inquiry'}
+                    {isSending ? 'Sending...' : 'Send Inquiry'}
                   </Button>
                 </form>
               </div>
