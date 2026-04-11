@@ -25,10 +25,10 @@ export default function Contact() {
 
     emailjs
       .send(
-        'YOUR_SERVICE_ID',   // replace with your EmailJS Service ID
-        'YOUR_TEMPLATE_ID',  // replace with your EmailJS Template ID
-        formData,
-        'YOUR_PUBLIC_KEY'    // replace with your EmailJS Public Key
+        'service_vpzbb8b',
+        'template_8u4ownb',
+        { ...formData, subject: 'Website Enquiry from ' + formData.full_name },
+        'jFECqt5d8pKZfv2aN'
       )
       .then(() => {
         setSubmitted(true);
