@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://escapetoasia.co.uk/sitemap.xml
