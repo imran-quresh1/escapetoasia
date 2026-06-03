@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../../utils';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Clock, ArrowRight } from 'lucide-react';
 
 export default function DestinationCard({ destination, index }) {
   return (
@@ -18,8 +18,10 @@ export default function DestinationCard({ destination, index }) {
           <div className="relative h-64 overflow-hidden">
             <img
               src={destination.image_url}
-              alt={destination.name}
+              alt={`${destination.name}, ${destination.country}`}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+              decoding="async"
               onError={(e) => { e.target.src = import.meta.env.BASE_URL + 'images/destinations-bg-1920.jpg'; }}
             />
             <div className="absolute top-4 left-4">

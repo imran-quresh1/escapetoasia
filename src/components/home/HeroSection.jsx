@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../../utils';
 import { motion } from 'framer-motion';
-import { ChevronDown, Play } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 export default function HeroSection() {
   return (
@@ -13,6 +13,8 @@ export default function HeroSection() {
           src={import.meta.env.BASE_URL + 'images/hero-1920.jpg'}
           alt="Beautiful Asian landscape"
           className="w-full h-full object-cover"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
       </div>

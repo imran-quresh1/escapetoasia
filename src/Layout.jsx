@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Menu, X, Phone, Mail, MapPin, Instagram, Facebook } from 'lucide-react';
+import { Menu, X, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ChatWidget from './components/chat/ChatWidget';
 
@@ -156,23 +156,23 @@ export default function Layout({ children, currentPageName }) {
             <div>
               <h4 className="font-semibold mb-4 text-[#D4A574]">Destinations</h4>
               <ul className="space-y-2 text-sm text-white/70">
-                <li><a href="#" className="hover:text-white transition-colors">Dubai, UAE</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">India</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Vietnam</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Indonesia</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Malaysia</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Singapore</a></li>
+                <li><Link to={createPageUrl('Destinations')} className="hover:text-white transition-colors">Dubai, UAE</Link></li>
+                <li><Link to={createPageUrl('Destinations')} className="hover:text-white transition-colors">India</Link></li>
+                <li><Link to={createPageUrl('Destinations')} className="hover:text-white transition-colors">Vietnam</Link></li>
+                <li><Link to={createPageUrl('Destinations')} className="hover:text-white transition-colors">Indonesia</Link></li>
+                <li><Link to={createPageUrl('Destinations')} className="hover:text-white transition-colors">Malaysia</Link></li>
+                <li><Link to={createPageUrl('Destinations')} className="hover:text-white transition-colors">Singapore</Link></li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-semibold mb-4 text-[#D4A574]">Services</h4>
               <ul className="space-y-2 text-sm text-white/70">
-                <li><a href="#" className="hover:text-white transition-colors">Flight Bookings</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Hotel Reservations</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Airport Transfers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Guided Tours</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Excursions</a></li>
+                <li><Link to={createPageUrl('Services')} className="hover:text-white transition-colors">Flight Bookings</Link></li>
+                <li><Link to={createPageUrl('Services')} className="hover:text-white transition-colors">Hotel Reservations</Link></li>
+                <li><Link to={createPageUrl('Services')} className="hover:text-white transition-colors">Airport Transfers</Link></li>
+                <li><Link to={createPageUrl('Services')} className="hover:text-white transition-colors">Guided Tours</Link></li>
+                <li><Link to={createPageUrl('Services')} className="hover:text-white transition-colors">Excursions</Link></li>
               </ul>
             </div>
 

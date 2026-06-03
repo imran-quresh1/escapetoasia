@@ -68,8 +68,10 @@ export default function FeaturedDestinations() {
                 <div className="relative h-[400px] rounded-2xl overflow-hidden">
                   <img
                     src={dest.image}
-                    alt={dest.name}
+                    alt={`${dest.name}, ${dest.country}`}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   

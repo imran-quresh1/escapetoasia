@@ -95,6 +95,8 @@ export default function RecommendedStays({ destinationName }) {
                 src={stay.image}
                 alt={stay.name}
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="p-5">

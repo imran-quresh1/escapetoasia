@@ -23,7 +23,7 @@ const testimonials = [
     name: 'Emma Rodriguez',
     location: 'Toronto, Canada',
     image: img('testimonial-emma-200.jpg'),
-    text: 'India can be overwhelming for first-time visitors, but Wanderlux made it magical. Our personal guide helped us navigate the chaos beautifully. The Golden Triangle tour was unforgettable.',
+    text: 'India can be overwhelming for first-time visitors, but Escape To Asia made it magical. Our personal guide helped us navigate the chaos beautifully. The Golden Triangle tour was unforgettable.',
     destination: 'India',
   },
 ];
@@ -72,6 +72,8 @@ export default function Testimonials() {
                   src={testimonials[current].image}
                   alt={testimonials[current].name}
                   className="w-16 h-16 rounded-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div>
                   <h4 className="font-semibold text-[#0F4C5C]">{testimonials[current].name}</h4>
