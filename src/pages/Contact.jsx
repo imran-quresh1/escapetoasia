@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
+import SEO from '@/components/SEO';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -70,6 +71,11 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-[#F5F1EB]">
+      <SEO
+        title="Plan Your Trip — Contact Us"
+        description="Get in touch with Escape To Asia to plan your all-inclusive Asia holiday. Call, WhatsApp or email our UK travel experts for a free, no-obligation quote."
+        path="/Contact"
+      />
       {/* Hero Section */}
       <section className="relative h-[40vh] min-h-[350px] flex items-center justify-center">
         <div className="absolute inset-0">

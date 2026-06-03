@@ -6,6 +6,7 @@ import DestinationCard from '../components/destinations/DestinationCard';
 import CountryFilter from '../components/destinations/CountryFilter';
 import { Loader2, Search, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import SEO from '@/components/SEO';
 
 export default function Destinations() {
   const [selectedCountry, setSelectedCountry] = useState('all');
@@ -40,6 +41,11 @@ export default function Destinations() {
 
   return (
     <div className="min-h-screen bg-[#F5F1EB]">
+      <SEO
+        title="Asia Holiday Destinations"
+        description="Explore handpicked holiday destinations across Dubai, India, Vietnam, Indonesia, Malaysia and Singapore — all-inclusive packages with flights, hotels, transfers and tours."
+        path="/Destinations"
+      />
       {/* Hero Section */}
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">

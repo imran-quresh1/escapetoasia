@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import { MapPin, Clock, Check, ArrowRight, Loader2 } from 'lucide-react';
 import PopularActivities from '../components/destinations/PopularActivities';
 import RecommendedStays from '../components/destinations/RecommendedStays';
+import SEO from '@/components/SEO';
+import { SITE_URL } from '@/lib/seo-config';
 
 export default function DestinationDetail() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -32,6 +34,7 @@ export default function DestinationDetail() {
   if (!destination) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#F5F1EB] px-4">
+        <SEO title="Destination not found" noindex path="/DestinationDetail" />
         <h1 className="text-2xl font-semibold text-[#0F4C5C] mb-4">Destination not found</h1>
         <Link
           to={createPageUrl('Destinations')}
@@ -43,8 +46,48 @@ export default function DestinationDetail() {
     );
   }
 
+  const canonicalPath = `/DestinationDetail?id=${destinationId}`;
+  const metaDescription = destination.description
+    ? destination.description.slice(0, 155)
+    : `Discover ${destination.name}, ${destination.country} with Escape To Asia — an all-inclusive package with flights, hotels, transfers, a personal guide and curated excursions.`;
+
+  const tripSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'TouristTrip',
+    name: `${destination.name} Holiday Package`,
+    description: destination.description || metaDescription,
+    image: destination.image_url,
+    provider: { '@type': 'TravelAgency', name: 'Escape To Asia', url: SITE_URL },
+  };
+  if (destination.starting_price) {
+    tripSchema.offers = {
+      '@type': 'Offer',
+      price: destination.starting_price,
+      priceCurrency: 'GBP',
+      availability: 'https://schema.org/InStock',
+      url: SITE_URL + canonicalPath,
+    };
+  }
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Destinations', item: SITE_URL + '/Destinations' },
+      { '@type': 'ListItem', position: 3, name: destination.name, item: SITE_URL + canonicalPath },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[#F5F1EB]">
+      <SEO
+        title={`${destination.name} Holiday Package`}
+        description={metaDescription}
+        path={canonicalPath}
+        image={destination.image_url}
+        type="article"
+        jsonLd={[tripSchema, breadcrumbSchema]}
+      />
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px]">
         <div className="absolute inset-0">

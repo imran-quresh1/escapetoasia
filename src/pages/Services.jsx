@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { motion } from 'framer-motion';
 import { Plane, Hotel, Car, Map, Users, Compass, Check, ArrowRight, Shield, Clock, Heart } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 const services = [
   {
@@ -64,6 +65,11 @@ const whyUs = [
 export default function Services() {
   return (
     <div className="min-h-screen bg-[#F5F1EB]">
+      <SEO
+        title="Our Travel Services"
+        description="Flights, airport transfers, hand-picked hotels, curated excursions, personal tour guides and custom itineraries — complete home-to-home Asia travel packages."
+        path="/Services"
+      />
       {/* Hero Section */}
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">
