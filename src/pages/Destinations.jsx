@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
+import { mockApi } from '@/lib/mockData';
 import { motion } from 'framer-motion';
 import DestinationCard from '../components/destinations/DestinationCard';
 import CountryFilter from '../components/destinations/CountryFilter';
@@ -14,7 +15,15 @@ export default function Destinations() {
 
   const { data: destinations = [], isLoading } = useQuery({
     queryKey: ['destinations'],
-    queryFn: () => base44.entities.Destination.list(),
+    queryFn: async () => {
+      // In development mode without Base44 config, use mock data
+      const isDev = import.meta.env.DEV;
+      if (isDev && !import.meta.env.VITE_BASE44_APP_BASE_URL) {
+        console.log('[DEV] Using mock destination data');
+        return mockApi.getDestinations();
+      }
+      return base44.entities.Destination.list();
+    },
   });
 
   const filteredDestinations = useMemo(() => {

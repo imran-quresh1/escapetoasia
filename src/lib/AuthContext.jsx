@@ -22,6 +22,17 @@ export const AuthProvider = ({ children }) => {
       setIsLoadingPublicSettings(true);
       setAuthError(null);
 
+      // For local development without Base44, skip auth checks
+      const isDev = import.meta.env.DEV;
+      if (isDev && (!appParams.appId || !appParams.appBaseUrl)) {
+        // Development mode - allow app to run without Base44
+        setAppPublicSettings({ id: 'dev-mode', public_settings: {} });
+        setIsLoadingPublicSettings(false);
+        setIsLoadingAuth(false);
+        setIsAuthenticated(false);
+        return;
+      }
+
       if (!appParams.appId || !appParams.appBaseUrl) {
         setAuthError({
           type: 'missing_config',

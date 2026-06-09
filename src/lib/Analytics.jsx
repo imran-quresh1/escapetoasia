@@ -1,16 +1,18 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { hasConsent, COOKIE_TYPES } from '@/lib/CookieConsent';
 
 // Google Analytics 4. Enabled only when VITE_GA_MEASUREMENT_ID is set, so the
 // app runs cleanly without it (e.g. locally or before an ID is provisioned).
+// Also requires explicit user consent (UK PECR compliance).
 const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 
 export default function Analytics() {
   const location = useLocation();
 
-  // Load the gtag script once.
+  // Load the gtag script once, only if user has given analytics consent.
   useEffect(() => {
-    if (!GA_ID || document.getElementById('ga4-src')) return;
+    if (!GA_ID || !hasConsent(COOKIE_TYPES.ANALYTICS) || document.getElementById('ga4-src')) return;
 
     const script = document.createElement('script');
     script.id = 'ga4-src';
@@ -28,7 +30,7 @@ export default function Analytics() {
 
   // Send a page_view on each client-side route change.
   useEffect(() => {
-    if (!GA_ID || typeof window.gtag !== 'function') return;
+    if (!GA_ID || !hasConsent(COOKIE_TYPES.ANALYTICS) || typeof window.gtag !== 'function') return;
     window.gtag('event', 'page_view', {
       page_path: location.pathname + location.search,
       page_location: window.location.href,

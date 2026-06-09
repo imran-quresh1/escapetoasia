@@ -32,6 +32,13 @@ const ROUTE_PAGES = [
       "Get in touch with Escape To Asia to plan your all-inclusive Asia holiday. Call, WhatsApp or email our UK travel experts for a free, no-obligation quote.",
   },
   {
+    file: "Privacy",
+    path: "/Privacy",
+    title: "Privacy & Cookie Policy | Escape To Asia",
+    description:
+      "Learn how Escape To Asia uses cookies and your personal data. Understand your rights and how to manage your cookie preferences.",
+  },
+  {
     file: "DestinationDetail",
     // Canonicalise the parameter-less stub to the Destinations hub; the client
     // sets the per-destination canonical via react-helmet when an id is present.
@@ -112,13 +119,21 @@ function staticRoutePages() {
 export default defineConfig({
   base: "/",
   logLevel: "error",
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
   plugins: [
-    base44({
-      legacySDKImports: process.env.BASE44_LEGACY_SDK_IMPORTS === "true",
-      hmrNotifier: true,
-      navigationNotifier: true,
-      visualEditAgent: true,
-    }),
+    // Only load Base44 plugin in production or if env vars are set
+    ...(process.env.VITE_BASE44_APP_ID && process.env.VITE_BASE44_APP_BASE_URL ? [
+      base44({
+        legacySDKImports: process.env.BASE44_LEGACY_SDK_IMPORTS === "true",
+        hmrNotifier: true,
+        navigationNotifier: true,
+        visualEditAgent: true,
+      })
+    ] : []),
     react(),
     staticRoutePages(),
   ],

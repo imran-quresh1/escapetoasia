@@ -1,9 +1,15 @@
 import { useEffect } from 'react';
+import { hasConsent, COOKIE_TYPES } from '@/lib/CookieConsent';
 
 export default function ChatWidget() {
   useEffect(() => {
-    var Tawk_API = window.Tawk_API || {};
-    var Tawk_LoadStart = new Date();
+    // Only load Tawk if user has given chat consent (UK PECR compliance)
+    if (!hasConsent(COOKIE_TYPES.CHAT)) {
+      return;
+    }
+
+    var _Tawk_API = window.Tawk_API || {};
+    var _Tawk_LoadStart = new Date();
 
     (function () {
       var s1 = document.createElement('script');

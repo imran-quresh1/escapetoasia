@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
+import { mockApi } from '@/lib/mockData';
 import { motion } from 'framer-motion';
 import { MapPin, Clock, Check, ArrowRight, Loader2 } from 'lucide-react';
 import PopularActivities from '../components/destinations/PopularActivities';
@@ -17,6 +18,12 @@ export default function DestinationDetail() {
   const { data: destination, isLoading } = useQuery({
     queryKey: ['destination', destinationId],
     queryFn: async () => {
+      // In development mode without Base44 config, use mock data
+      const isDev = import.meta.env.DEV;
+      if (isDev && !import.meta.env.VITE_BASE44_APP_BASE_URL) {
+        console.log('[DEV] Using mock destination data');
+        return mockApi.getDestinationById(destinationId);
+      }
       const destinations = await base44.entities.Destination.list();
       return destinations.find(d => d.id === destinationId);
     },

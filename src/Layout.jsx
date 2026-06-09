@@ -4,6 +4,7 @@ import { createPageUrl } from './utils';
 import { Menu, X, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ChatWidget from './components/chat/ChatWidget';
+import { resetConsent } from '@/lib/CookieConsent';
 
 export default function Layout({ children, currentPageName }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -200,8 +201,22 @@ export default function Layout({ children, currentPageName }) {
             </div>
           </div>
 
-          <div className="border-t border-white/10 mt-12 pt-8 text-center text-sm text-white/50">
+          <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
             <p>© 2026 Escape To Asia. All rights reserved.</p>
+            <div className="flex gap-4">
+              <Link to={createPageUrl('Privacy')} className="hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <button
+                onClick={() => {
+                  resetConsent();
+                  window.location.reload();
+                }}
+                className="hover:text-white transition-colors"
+              >
+                Cookie Settings
+              </button>
+            </div>
           </div>
         </div>
       </footer>

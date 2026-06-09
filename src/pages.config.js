@@ -51,6 +51,7 @@ import Contact from './pages/Contact';
 import DestinationDetail from './pages/DestinationDetail';
 import Destinations from './pages/Destinations';
 import Home from './pages/Home';
+import Privacy from './pages/Privacy';
 import Services from './pages/Services';
 import __Layout from './Layout.jsx';
 
@@ -60,6 +61,7 @@ export const PAGES = {
     "DestinationDetail": DestinationDetail,
     "Destinations": Destinations,
     "Home": Home,
+    "Privacy": Privacy,
     "Services": Services,
 }
 
